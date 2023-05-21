@@ -8,11 +8,9 @@ public class HandleStamina : MonoBehaviour
     public GameObject[] staminaPrefabs;
     [SerializeField]
     public static float stamina = 100;
-    public Slider slider;
 
     void Update()
     {
-        slider.value = stamina;
 
         if (stamina < 90)
         {

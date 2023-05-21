@@ -1136,7 +1136,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131726265}
-  m_LocalRotation: {x: 0.1704642, y: 0.000000021048834, z: -0.0000000036413677, w: 0.9853639}
+  m_LocalRotation: {x: 0.17046417, y: -0.000000015081808, z: 0.0000000026090945, w: 0.9853639}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4347,7 +4347,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522811750}
-  m_LocalRotation: {x: 0.09276319, y: 0.000000008566095, z: -7.9805945e-10, w: 0.9956882}
+  m_LocalRotation: {x: 0.09276319, y: -0.0000000085660945, z: 7.980594e-10, w: 0.9956882}
   m_LocalPosition: {x: 79.83, y: 25.3, z: 28.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5045,7 +5045,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615894446}
-  m_LocalRotation: {x: 0.092763186, y: 0.000000004283048, z: -3.9902973e-10, w: 0.9956882}
+  m_LocalRotation: {x: 0.092763186, y: -0.0000000042830473, z: 3.9902964e-10, w: 0.9956882}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6164,7 +6164,6 @@ GameObject:
   - component: {fileID: 736593905}
   - component: {fileID: 736593904}
   - component: {fileID: 736593903}
-  - component: {fileID: 736593906}
   m_Layer: 5
   m_Name: ImageStamina
   m_TagString: Untagged
@@ -6281,30 +6280,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736593901}
   m_CullTransparentMesh: 1
---- !u!114 &736593906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736593901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82f0a45543ef20d4eaf470a70e63ad97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  staminaPrefabs:
-  - {fileID: 1856786249}
-  - {fileID: 1289384554}
-  - {fileID: 1675563534}
-  - {fileID: 1780023711}
-  - {fileID: 928162008}
-  - {fileID: 1264361161}
-  - {fileID: 856119571}
-  - {fileID: 723435788}
-  - {fileID: 85933503}
-  - {fileID: 1899045464}
-  slider: {fileID: 736593903}
 --- !u!1001 &737206809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8971,6 +8946,7 @@ GameObject:
   - component: {fileID: 1049821901}
   - component: {fileID: 1049821903}
   - component: {fileID: 1049821902}
+  - component: {fileID: 1049821904}
   m_Layer: 5
   m_Name: Stamina
   m_TagString: Untagged
@@ -9046,6 +9022,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049821900}
   m_CullTransparentMesh: 1
+--- !u!114 &1049821904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049821900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f0a45543ef20d4eaf470a70e63ad97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaPrefabs:
+  - {fileID: 1856786249}
+  - {fileID: 1289384554}
+  - {fileID: 1675563534}
+  - {fileID: 1780023711}
+  - {fileID: 928162008}
+  - {fileID: 1264361161}
+  - {fileID: 856119571}
+  - {fileID: 723435788}
+  - {fileID: 85933503}
+  - {fileID: 1899045464}
 --- !u!1 &1066566349
 GameObject:
   m_ObjectHideFlags: 0
@@ -14220,7 +14219,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684451735}
-  m_LocalRotation: {x: 0.14892142, y: -0.000000008507257, z: 0.0000000012811995, w: 0.98884904}
+  m_LocalRotation: {x: 0.14892142, y: 0.000000008507255, z: -0.0000000012811993, w: 0.98884904}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17470,7 +17469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -17.255676, y: 18}
+  m_AnchoredPosition: {x: -17.255615, y: 18}
   m_SizeDelta: {x: 283.6105, y: 255.9431}
   m_Pivot: {x: 1, y: 0}
 --- !u!1001 &2008524186

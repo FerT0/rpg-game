@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private float walkSpeed = 4.0f;
     private float runSpeed = 8.0f;
     public float rotationSpeed;
+    private float staminaRegenTimer = 0.0f;
+    private float staminaTimeToRegen = 3.0f;
     private Animator anim;
     private CharacterController characterController;
     [SerializeField]
@@ -20,7 +22,7 @@ public class Player : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -37,22 +39,49 @@ public class Player : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             anim.SetBool("isMoving", true);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                speed = runSpeed;
-                anim.SetBool("isRunning", true);
-                HandleStamina.stamina -= 0.05f;
-            } else
-            {
-                speed = walkSpeed;
-                anim.SetBool("isRunning", false);
-            }
+            
         } else
         {
             anim.SetBool("isMoving", false);
         }
+
+        if (HandleStamina.stamina > 0)
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                anim.SetBool("isRunning", true);
+            }
+            else
+            {
+                anim.SetBool("isRunning", false);
+            }
+        } else
+        {
+            anim.SetBool("isRunning", false);
+        }
+
+        if (anim.GetBool("isRunning") == true)
+        {
+            speed = runSpeed;
+            HandleStamina.stamina -= 0.3f;
+            staminaRegenTimer = 0.0f;
+        } else
+        {
+            speed = walkSpeed;
+            if (staminaRegenTimer >= staminaTimeToRegen)
+            {
+                HandleStamina.stamina += 0.1f;
+            }
+            else
+            {
+                staminaRegenTimer += Time.deltaTime;
+            }
+        }
+        
+        Debug.Log(HandleStamina.stamina);
         
     }
+
 
     private void OnApplicationFocus(bool focus)
     {
@@ -65,6 +94,10 @@ public class Player : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
     }
+
+
+
+    
 
 
 }
