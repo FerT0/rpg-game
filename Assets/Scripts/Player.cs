@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
         } else
         {
             speed = walkSpeed;
-            if (staminaRegenTimer >= staminaTimeToRegen)
+            if ((staminaRegenTimer >= staminaTimeToRegen) && (HandleStamina.stamina < 100))
             {
                 HandleStamina.stamina += 0.1f;
             }
@@ -78,7 +78,6 @@ public class Player : MonoBehaviour
             }
         }
         
-        Debug.Log(HandleStamina.stamina);
         
     }
 
