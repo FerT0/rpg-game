@@ -10,12 +10,16 @@ public class Player : MonoBehaviour
     public float rotationSpeed;
     private float staminaRegenTimer = 0.0f;
     private float staminaTimeToRegen = 3.0f;
+    private float m_AnimHorizontal, m_AnimVertical;
     private Animator anim;
     private CharacterController characterController;
     [SerializeField]
     private Transform cameraTransform;
-    
-    
+    [SerializeField]
+    private float m_SmoothingSpeed = 2;
+
+
+
     void Start ()
     {
         anim = this.GetComponent<Animator>();
@@ -26,6 +30,8 @@ public class Player : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+
+
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
         float magnitude = Mathf.Clamp01 (movementDirection.magnitude) * speed;
@@ -39,7 +45,8 @@ public class Player : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             anim.SetBool("isMoving", true);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-            
+            Animate(horizontalInput, verticalInput);
+
         } else
         {
             anim.SetBool("isMoving", false);
@@ -92,6 +99,44 @@ public class Player : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
         }
+    }
+
+    private void Animate(float horizontalInput, float verticalInput)
+    {
+        float multiplier = anim.GetBool("isRunning") ? 1 : 0.5f;
+        float targetHorizontal = horizontalInput * multiplier;
+        float targetVertical = verticalInput * multiplier;
+        if (Mathf.Abs(m_AnimHorizontal - targetHorizontal) < 0.1f)
+        {
+
+
+            m_AnimHorizontal = targetHorizontal;
+        }
+        if (Mathf.Abs(m_AnimVertical - targetVertical) < 0.1f)
+        {
+
+            
+            m_AnimVertical = targetVertical;
+        }
+        if (m_AnimHorizontal < targetHorizontal)
+        {
+            m_AnimHorizontal += Time.deltaTime * m_SmoothingSpeed;
+        } else if (m_AnimHorizontal > targetHorizontal)
+        {
+            m_AnimHorizontal -= Time.deltaTime * m_SmoothingSpeed;
+       
+        }
+        if (m_AnimVertical < targetVertical)
+        {
+            m_AnimVertical += Time.deltaTime * m_SmoothingSpeed;
+        } else if (m_AnimVertical > targetVertical)
+        {
+            m_AnimVertical -= Time.deltaTime * m_SmoothingSpeed;
+            
+        }
+        anim.SetFloat("horizontal", m_AnimHorizontal);
+        anim.SetFloat("vertical", m_AnimVertical);
+
     }
 
 
